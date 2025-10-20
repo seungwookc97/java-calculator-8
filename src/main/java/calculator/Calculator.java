@@ -35,7 +35,15 @@ class Calculator {
     private static int sum(String[] numbers) {
         int total = 0;
         for (String number : numbers) {
-            total += Integer.parseInt(number);
+            try {
+                int num = Integer.parseInt(number);
+                if (num < 0) {
+                    throw new IllegalArgumentException();
+                }
+                total += num;
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException();
+            }
         }
         return total;
     }
